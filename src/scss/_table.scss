@@ -1,0 +1,123 @@
+.table-block{
+	width: 100%;
+	overflow: scroll;
+	position: relative;
+}
+.save{
+	position: absolute;
+	right: 40px;
+	bottom: 40px;
+	z-index: 10;
+	img{
+		width: 56px;
+	}
+}
+.table{
+	@include fsize(14px);
+	th, td{
+		padding: 12px 25px;
+		color: rgba(155, 155, 155, 0.5);
+		position: relative;
+		min-width: 150px;
+		vertical-align: center;
+	}
+	th{
+		white-space: nowrap;
+		text-align: left;
+		color: black;
+	}
+	th[scope=row]{
+		font-weight: normal;
+		min-width: 280px;
+		padding-right: 30px;
+		&:hover{
+			.comment{
+				display: flex;
+			}
+		}
+	}
+	tr.rated th, tr.rated td{
+		background: #EBF6FF;
+	}
+	&.table-bordered td, &.table-bordered th {
+	    border-top: 1px solid #fff;
+	    border-bottom: 1px solid #fff;
+	    border-left: 1px solid rgba(#979797, 0.3);
+	    border-right: 1px solid rgba(#979797, 0.3);
+	}
+	&.table-bordered th {
+	    border-bottom: 0 none;
+	}
+	thead{
+		position: sticky;
+	}
+	&.table-bordered td.summary, &.table-bordered th.summary{
+		border-left: 2px solid #434343;
+	}
+}
+.td__cell{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.empty{
+		color: rgba(155, 155, 155, 0.5);
+		@include fsize(14px);
+	}
+}
+.faq{
+	float: right;
+}
+.comment{
+	display: none;
+	border-radius: 50%;
+	height: 34px;
+	width: 34px;
+	float: right;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	right: 7px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-image: url(../img/notify.svg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	text-align: center;
+	color: white;
+	align-items: center;
+	transition: all 0.2s ease-in;
+	border: 0 none;
+	&:hover{
+		background-color: rgba($toneColor, 0.2);
+		background-image: url(../img/notify-a.svg);
+		color: white;
+	}
+	&.has-comment{
+		display: flex;
+		background-image: url(../img/notify-a.svg);
+		color: $toneColor;
+	}
+}
+.rating{
+	&__num{
+		display: block;
+		font-weight: 700;
+		color: black;
+		flex: 0 1 20px;
+		width: 20px;
+		text-align: left;
+	}
+	&__arrow{
+		display: block;
+		text-align: right;
+		padding-top: 3px;
+		flex: 0 1 25px;
+		width: 25px;
+	}
+	&__progress{
+		float: left;
+		flex-grow: 2;
+	}
+}

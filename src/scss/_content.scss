@@ -1,0 +1,236 @@
+.top-bar, .bottom-bar{
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	margin: auto;
+	height: 30px;
+	background-color: $bodyColor;
+	color: #999;
+	padding: 0 30px;
+	span {
+		line-height: 30px;
+		font-size: 10px;
+		font-family: $monoFont, serif;
+	}
+}
+.bottom-bar{
+	bottom: 0;
+	span {
+		float: right;
+	}
+}
+.wrapper{
+	padding: 30px;
+}
+.app{
+	min-height: calc(100vh - 160px);
+	height: 100%;
+	margin-top: 100px;
+	background-color: $bgColor;
+	display: flex;
+	flex-direction: column;
+}
+.judge-index .app{
+	background: $toneColor;
+}
+
+/** main-content **/
+.main-content{
+	display: flex;
+	justify-content: space-between;
+	flex-grow: 1;
+	& > .aside{
+		width: 33%;
+		background-image: url("../img/aside01.jpg");
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		position: relative;
+		&:after{
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 2;
+			@include background-opacity($textColor, 0.63);
+		}
+	}
+	& > .info{
+		width: 68%;
+		padding: 0; 
+	}
+}
+body:not(.judge-index) .main-content{
+	& > .aside{
+		display: none;
+	}
+	& > .info{
+		width: 100%;
+	}
+}
+
+/* info */
+.info{
+	&__body{
+		padding: 83px 11%;
+		color: $innerTextColor;
+	}
+	&__text{
+		margin: 0 auto;
+		width: 61%;
+	}
+	&__buttons{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 15px 0 0 0;
+		.button{
+			flex: 0 1 49%;
+			margin-bottom: 10px;
+		}
+	}
+	&__header{
+		height: 80px;
+		background-color: $headerColor;
+		padding: 0 5px 0 69px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}	
+}
+body:not(.judge-index) .info{
+	&__body{
+		padding: 0;
+		color: $innerTextColor;
+	}
+}
+.timer{
+	position: relative;
+	&__num{
+		color: $bgColor;
+	}
+	&__text{
+		color: rgba($bgColor, 0.5);
+		@include fsize(11px);
+	}
+	.progress{
+		min-width: auto;
+	}
+	.arrow{
+		display: none;
+		position: absolute;
+		top: 26px;
+		right: -18px;
+		span{
+			border-top: 6px solid rgba($bgColor, 0.5);
+		}
+	}
+}
+.icons{
+	&__list{
+		display: flex;
+		justify-content: space-between;
+	}
+	&__item{
+		padding: 7px;
+		margin: 0 5px;
+		position: relative;
+	}
+	&__note{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 3;
+		transform: translate(-50%, -50%);
+		@include fsize(10px);
+		font-family: $mainFont;
+		cursor: pointer;
+		&:hover ~ .icons__link{
+			@include background-opacity($bgColor, 0.2);
+			.opacity{
+				opacity: 1;
+			}
+		}
+	}
+	&__link{
+		display: block;
+		border-radius: 50%;
+		width: 42px;
+		height: 42px;
+		@include background-opacity($bgColor, 0.04);
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.opacity{
+			opacity: 0.5;
+		}
+		.fill{
+			fill: #fff;
+		}
+		&:hover{
+			@include background-opacity($bgColor, 0.2);
+			.opacity{
+				opacity: 1;
+			}
+		}
+		&.active{
+			@include background-opacity($bgColor, 1);
+			fill: #000000;
+			.opacity{
+				opacity: 1;
+			}
+			.fill{
+				fill: #000;
+			}
+		}
+	}
+}
+.icons__item.active{
+	.icons__link{
+		&:hover{
+			@include background-opacity($bgColor, 1);
+			fill: #000000;
+			.opacity{
+				opacity: 1;
+			}
+			.fill{
+				fill: #000;
+			}
+		}
+		@include background-opacity($bgColor, 1);
+		fill: #000000;
+		.opacity{
+			opacity: 1;
+		}
+		.fill{
+			fill: #000;
+		}
+	}
+}
+.icons__item.notify{
+	background-color: $textColor;
+	.icons__link{
+		&:hover{
+			@include background-opacity($bgColor, 0);
+			fill: #000000;
+			.opacity{
+				opacity: 1;
+			}
+			.fill{
+				fill: $toneColor;
+			}
+		}
+		@include background-opacity($bgColor, 0);
+		fill: #000000;
+		.opacity{
+			opacity: 1;
+		}
+		.fill{
+			fill: $toneColor;
+		}
+	}
+}

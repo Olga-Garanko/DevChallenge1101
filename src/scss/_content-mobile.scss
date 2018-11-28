@@ -1,0 +1,112 @@
+@media only screen and (max-width : 1400px) {
+	.info{
+		&__text{
+			width: 65%;
+		}
+	}
+}
+@media only screen and (max-width : 1279px) {
+	.info{
+		&__buttons{
+			.button{
+				flex: 0 1 49%;
+			}
+		}
+		&__header{
+			height: 60px;
+			padding: 0 0 0 10px;
+		}
+		&__body{
+			padding: 65px 9%;
+		}
+		&__text{
+			width: 85%;
+		}
+	}
+}
+@media screen and (max-width: 839px) {
+	.top-bar, .bottom-bar{
+		height: 20px;
+		& span{
+			line-height: 20px;
+		}
+	}
+	.wrapper{
+		padding: 20px;
+		top: 20px;
+	}
+	.app{
+		margin-top: 50px;
+		min-height: calc(100vh - 90px);
+	}
+	.main-content > .aside{
+		display: none;
+	}
+	.main-content > .info{
+		flex: 0 1 100%;
+	}
+	.info{
+		&__buttons{
+			.button{
+				flex: 0 1 100%;
+			}
+		}
+		&__header{
+			height: 50px;
+		}
+		&__body{
+			padding: 50px 5%;
+		}
+		&__text{
+			width: 83%;
+		}
+	}
+	.timer{
+		&__num{
+			color: rgba($bgColor,0.5);
+			@include fsize(11px);
+		}
+		&__text{
+			display:none;
+		}
+		&__progress{
+			@include background-opacity(#D8D8D8, 0.26);
+			border-radius: 2px;
+			height: 4px;
+			margin: 7px 0;
+			.progress-bar{
+				background-color: #D8D8D8;
+				border-radius: 2px;
+			}
+		}
+		.arrow{
+			display: block;
+		}
+	}
+	.icons{
+		&__item{
+			padding: 7px 0;
+			margin: 0 2px;
+		}
+		&__link{
+			width: 35px;
+			height: 35px;
+		}
+	}
+}
+@media only screen and (max-width : 599px) {
+	.info{
+		&__body{
+			padding: 50px 3%;
+		}
+		&__text{
+			width: 100%;
+		}
+	}
+	.icons{
+		&__item{
+			padding: 0;
+			margin: 0 2px;
+		}
+	}
+}

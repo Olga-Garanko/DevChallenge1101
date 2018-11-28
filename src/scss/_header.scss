@@ -1,0 +1,247 @@
+.navbar{
+	position: fixed;
+	top: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	padding: 0 29px;
+	min-width: 320px;
+	z-index: 100;
+}
+.nav{
+	height: 100px;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: $bgColor;
+	position: relative;
+	&__menu{
+		flex-grow: 2;
+		display: flex;
+		margin-left: 40px;
+	}
+	&__item{
+		margin: 0 5px;
+	}
+	&__link{
+		text-transform: uppercase;
+		@include fsize(11px);
+		letter-spacing: 1.1px;
+		font-weight: bold;
+		font-family: $monoFont;
+		white-space: nowrap;
+		padding: 0 13px;
+		background: #fff;
+		display: block;
+		height: 31px;
+		line-height: 31px;
+		position: relative;
+		z-index: 2;		
+	}
+	&__cell {
+		padding: 2px;
+		position: relative;
+		overflow: hidden;
+		color: inherit;
+		display: inline-block;
+		&:after, &:before {
+			transition: opacity, .5s ease-out .3s;
+			transform: translateZ(0);
+			position: absolute;
+			height: 35px;
+			width: 35px;
+			content: "";
+			background: $toneColor;
+			z-index: 1;
+		}
+		&:before {
+			right: -35px;
+			top: -35px;
+		}
+		&:after {
+			left: -35px;
+			bottom: -35px;
+		}
+		&.active:before {
+			top: 0;
+			right: -28px;
+		}
+		&.active:after {
+			bottom: 0;
+			left: -28px;
+		}
+	}
+	&__logo{
+		flex-basis: 230px;
+		display: inline-block;
+		text-align: center;
+		margin-top: -6px;
+	}
+	&__img{
+		width: 160px;
+		&_mob{
+			display:none;
+		}
+	}
+	&__user{
+		flex-basis: 140px;
+		height: 100%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: $btnColor;
+		@include fsize(10px);
+		&:hover{
+			color: $toneColor;
+		}
+	}
+	&__avatar{
+		height: 60px;
+		width: 60px;
+		border-radius: 50%;
+		overflow: hidden;
+		background-image: url(/img/avatar.png);
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		margin-bottom: 3px;
+	}
+	&__icon{
+		display: none;
+		position: absolute;
+		right: 34px;
+		top: 24px;
+		z-index: 201;
+	}
+}
+
+.nav__menu li:hover .nav__cell:before {
+	animation: animateLinkBefore .8s ease-out .15s forwards;
+}
+.nav__menu li:hover .nav__cell:after {
+	animation: animateLinkAfter .8s ease-out .15s forwards;
+}
+@keyframes animateLinkBefore{
+	0% {
+		height:35px;
+		top:-33px;
+		right:100%;
+		width:10px;
+		bottom:auto;
+	}
+	50% {
+		top:-33px;
+		right:-33px;
+		width:35px;
+	}
+	75% {
+		top:0;
+		right:-33px;
+	}
+	to {
+		top:0;
+		right:-28px;
+	}
+}
+@keyframes animateLinkAfter{
+	0% {
+		height:35px;
+		width:10px;
+		bottom:-33px;
+		left:100%;
+		top:auto;
+	}
+	50% {
+		width:35px;
+		bottom:-33px;
+		left:-33px;
+	}
+	75% {
+		bottom:0;
+		left:-33px;
+	}
+	to {
+		bottom:0;
+		left:-28px;
+	}
+}
+/* toggle menu */
+.toggle_menu {
+	display: none;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+.toggle_menu.active {
+	background-color: transparent;
+	border: none;
+}
+.toggle_menu span {
+	display: block;
+}
+.sandwich {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 8px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 200;
+	float: left;
+}
+.sw-topper {
+	position: relative;
+	top: 0;
+	width: 24px;
+	height: 2px;
+	background: $textColor;
+	border: none;
+	border-radius: 4px 4px 4px 4px;
+	transition: transform 0.5s, top 0.2s;
+	display: block;
+}
+.sw-bottom {
+	position: relative;
+	width: 24px;
+	height: 2px;
+	top: 4.6px;
+	background: $textColor;
+	border: none;
+	border-radius: 4px 4px 4px 4px;
+	transition: transform 0.5s, top 0.2s;
+	transition-delay: 0.2s, 0s;
+}
+.sw-footer {
+	position: relative;
+	width: 24px;
+	height: 2px;
+	top: 9.5px;
+	background: $textColor;
+	border: none;
+	border-radius: 4px 4px 4px 4px;
+	transition: all 0.5s;
+	transition-delay: 0.1s;
+}
+.sandwich.active .sw-topper {
+	top: 7px;
+	transform: rotate(-45deg);
+	background: $textColor;
+}
+.sandwich.active .sw-bottom {
+	top: 5px;
+	transform: rotate(45deg);
+	background: $textColor;
+}
+.sandwich.active .sw-footer {
+	opacity: 0;
+	top: 0;
+	transform: rotate(180deg);
+	background: $textColor;
+}
